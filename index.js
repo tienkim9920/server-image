@@ -19,6 +19,10 @@ var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.get('/', async (req, res) => {
+    res.json("Thanh Cong!")
+})
+
 app.post('/image', async (req, res) => {
 
     var fileImage = req.files.file;
