@@ -30,8 +30,7 @@ app.post('/image', async (req, res) => {
     var fileName = fileImage.name
 
     // create path to client get image
-    // var fileProduct = "https://server-lover.herokuapp.com/" + fileName
-    var fileProduct = "http://localhost:8000/" + fileName
+    var fileProduct = "https://tienkim-image.herokuapp.com/" + fileName
 
     // move file name in folder public
     fileImage.mv('./public/' + fileName)
