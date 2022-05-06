@@ -118,21 +118,23 @@ router.post('/', async (req, res) => {
 router.patch('/', async (req, res) => {
     try {
         const { _id, title, username, body, phone } = req.body;
-        let blog = await Blog.findById({ _id });
-        if (title) {
-            blog.title = title;
+        if (_id) {
+            let blog = await Blog.findById({ _id });
+            if (title) {
+                blog.title = title;
+            }
+            if (username) {
+                blog.username = username;
+            }
+            if (body) {
+                blog.body = body;
+            }
+            if (phone) {
+                blog.phone = phone;
+            }
+            blog.save();
+            res.status(200).json("Update Successfully");
         }
-        if (username) {
-            blog.username = username;
-        }
-        if (body) {
-            blog.body = body;
-        }
-        if (phone) {
-            blog.phone = phone;
-        }
-        blog.save();
-        res.status(200).json("Update Successfully");
     } catch (error) {
         res.status(404).json(error);
     }
