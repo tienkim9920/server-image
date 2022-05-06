@@ -38,22 +38,26 @@ app.post('/blogs', async (req, res) => {
 })
 
 app.patch('/blogs', async (req, res) => {
-    const { _id, title, username, body, phone } = req.body;
-    let blog = await Blog.findById({ _id });
-    if (title) {
-        blog.title = title;
+    try {
+        const { _id, title, username, body, phone } = req.body;
+        let blog = await Blog.findById({ _id });
+        if (title) {
+            blog.title = title;
+        }
+        if (username) {
+            blog.username = username;
+        }
+        if (body) {
+            blog.body = body;
+        }
+        if (phone) {
+            blog.phone = phone;
+        }
+        blog.save();
+        res.json("Update Successfully");
+    } catch (error) {
+        res.json(error);
     }
-    if (username) {
-        blog.username = username;
-    }
-    if (body) {
-        blog.body = body;
-    }
-    if (phone) {
-        blog.phone = phone;
-    }
-    blog.save();
-    res.json("Update Successfully");
 })
 
 app.delete('/blogs/:id', async (req, res) => {
