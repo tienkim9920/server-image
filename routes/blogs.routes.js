@@ -205,9 +205,9 @@ router.post('/image', async (req, res) => {
         var fileProduct = "https://tienkim-crud.herokuapp.com/" + fileName
         // move file name in folder public
         fileImage.mv('./public/' + fileName)
-        res.json(fileProduct)
+        res.send(200).json(fileProduct)
     } catch (error) {
-        res.json(error)
+        res.send(404).json(error)
     }
 })
 

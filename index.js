@@ -44,8 +44,10 @@ const mongoose = require("mongoose");
 mongoose.connect("mongodb+srv://tienkim9920:U4tQMg6Wfy8DaL@cluster0.rco6f.mongodb.net/Blog?retryWrites=true&w=majority")
 
 const blogsAPI = require('./routes/blogs.routes');
+const usersAPI = require('./routes/users.route');
 
 app.use('/blogs', blogsAPI);
+app.use('/users', usersAPI);
 
 server.listen(PORT, () => {
     console.log('listening on *: ' + PORT);
