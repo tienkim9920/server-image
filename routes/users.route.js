@@ -59,7 +59,7 @@ router.post('/login', async (req, res) => {
     });
 
     try {
-        if (user === null) {
+        if (!user) {
             res.status(404).json({ msg: "Login Unsuccessful" })
         } else {
             var token = jwt.sign({ user: user }, 'hackertuoicc');
